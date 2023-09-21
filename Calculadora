@@ -1,0 +1,40 @@
+print("¡Bienvenido a la calculadora!")
+print("""Estos son los signos disponibles:
+      +,  -,  *,  /,  **, //, %""")
+
+number1 = float(input("Ingrese el primer número: "))
+operacion = input("Ingrese un signo: ")
+number2 = float(input("Ingrese el segundo número: "))
+
+if (operacion == '+'):
+  print("El resultado es: " + str(number1 + number2))
+elif (operacion == '-'):
+  print("El resultado es: " + str(number1 - number2))
+elif (operacion == '*'):
+  print("El resultado es: " + str(number1 * number2))
+elif (operacion == '/'):
+  if (number2 != 0):
+    print("El resultado es: " + str(number1 / number2))
+  else:
+    print(
+      "El numero con el que se está dividiendo es cero. ¡Operación Incorrecta!"
+    )
+elif (operacion == '**'):
+  print("El resultado es: " + str(number1**number2))
+elif (operacion == '//'):
+  if (number2 != 0):
+    print("El resultado es: " + str(number1 // number2))
+  else:
+    print(
+      "El numero con el que se está dividiendo es cero. ¡Operación Incorrecta!"
+    )
+elif (operacion == '%'):
+  if (number2 != 0):
+    print(number1 % number2)
+  else:
+    print(
+      "El numero con el que se está operando es cero. ¡Operación Incorrecta!")
+else:
+  print("Ingrese una operación correcta")
+
+print("Fin del programa, hasta luego.")
