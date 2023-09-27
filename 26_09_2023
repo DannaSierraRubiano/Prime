@@ -1,0 +1,88 @@
+#Crear un programa que recorra una lista y use condicionales y funciones.
+
+import random
+
+def getValorInicial():
+  return random.randint(0,1)
+
+def recibirInput():
+  adivinanza = input("¿cara o cruz?: ")
+  adivinanza = adivinanza.lower()
+  if adivinanza == "cara":
+    return 1
+  elif adivinanza == "cruz":
+    return 0
+  else:
+    return -1
+
+def iniciarJuego():
+  resultado = getValorInicial()
+  adivinanza = recibirInput()
+  while adivinanza == -1:
+    print("Error...")
+    adivinanza = recibirInput()
+
+  if adivinanza == resultado:
+    print("¡ADIVINASTE! Te ganaste una galleta")
+  else:
+    print("Incorrecto. Te ganaste un cachetazo.")
+
+def procesarSeleccion(seleccion):
+  if seleccion == "s" or seleccion == "si" or seleccion == "n" or seleccion == "no":
+    return True
+  else:
+    return False
+
+def reiniciar():
+  seleccion= input("¿Volver a jugar? (s/n): ").lower()
+  print()
+  seleccionValida = procesarSeleccion(seleccion)
+  while seleccionValida == False:
+    seleccion = input("Error. ¿Volver a jugar? (s/n) ").lower()
+    seleccionValida = procesarSeleccion(seleccion)
+    
+  if seleccion == "s" or seleccion == "si":
+    return True
+  elif seleccion == "n" or seleccion == "no":
+    return False
+
+
+playAgain = True
+while playAgain:
+  iniciarJuego()
+  playAgain = reiniciar()
+
+#Version 2
+
+import random
+
+def getValorInicial():
+    return random.randint(0, 1)
+
+def recibirInput():
+    while True:
+        adivinanza = input("¿cara o cruz?: ").lower()
+        if adivinanza in ["cara", "cruz"]:
+            return 1 if adivinanza == "cara" else 0
+        else:
+            print("Error. Ingresa 'cara' o 'cruz'.")
+
+def iniciarJuego():
+    resultado = getValorInicial()
+    adivinanza = recibirInput()
+
+    if adivinanza == resultado:
+        print("¡ADIVINASTE! Te ganaste una galleta")
+    else:
+        print("Incorrecto. Te ganaste un cachetazo.")
+
+def reiniciar():
+    while True:
+        seleccion = input("¿Volver a jugar? (s/n): ").lower()
+        if seleccion in ["s", "si", "n", "no"]:
+            return seleccion.startswith("s")
+
+playAgain = True
+while playAgain:
+    iniciarJuego()
+    playAgain = reiniciar()
